@@ -2,7 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import webbrowser
 
 
 def main():
@@ -15,16 +14,7 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    
-    # Check if the command is 'runserver' and run it with the default port (8000) if no other command is specified
-    if len(sys.argv) == 1 or sys.argv[1] == 'runserver':
-        sys.argv = [sys.argv[0], 'runserver', '0.0.0.0:8000']
-        # Start the Django development server
-        execute_from_command_line(sys.argv)
-        # Open the website in a browser
-        webbrowser.open('http://localhost:8000')
-    else:
-        execute_from_command_line(sys.argv)
+    execute_from_command_line(sys.argv)
 
 
 if __name__ == '__main__':
